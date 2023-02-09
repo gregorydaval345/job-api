@@ -10,6 +10,7 @@ const Post = ({ post }) => {
         return <div>Loading...</div>;
     }
 
+
     return (
         // {[2][0].map(inner) => (
         //     {inner[2]?[0].map(post) => (
@@ -23,9 +24,9 @@ const Post = ({ post }) => {
         // </div>
         <div>
             {
-                [2][0].map(inner => (
-                    <>
-                        {inner[2][0].map(jobs => (
+                Object.keys([2][0]).map(post => (
+                    <div>
+                        {post[2][0].map(jobs => (
                             <>
                                 <p>{jobs.title}</p>
                                 <div>
@@ -34,7 +35,7 @@ const Post = ({ post }) => {
                             </>
                         ))
                         }
-                    </>
+                    </div>
                 ))
             }
         </div>
@@ -46,8 +47,8 @@ export default Post;
 
 export const getServerSideProps = async ({ params }) => {
     const { data } = await axios.get(`https://web3.career/api/v1?token=aGZHTzmfhRKbU9eh5WdYs1f9i3SKQKtc/${params.id}`);
-    const posts = data
-    console.log(posts)
+    const posts =  data
+    // console.log(posts)
 
     if (!data) {
         return {
