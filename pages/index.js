@@ -15,8 +15,8 @@ const Index = (props) => {
           <li key={post.id}>
             <Link
               href={{
-                pathname: "/[id]",
-                query: { id: post.id }
+                pathname: "/[jobId]",
+                query: { jobId: post.id }
               }}>
               {post.title}
             </Link>
@@ -30,14 +30,10 @@ const Index = (props) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const res = await (await axios.get("https://web3.career/api/v1?token=aGZHTzmfhRKbU9eh5WdYs1f9i3SKQKtc", {
-    headers: {
-      Accept: 'application/json'
-    }
-  }));
-  console.log(res.data)
+  const res = await axios.get("https://web3.career/api/v1?token=aGZHTzmfhRKbU9eh5WdYs1f9i3SKQKtc");
+  // console.log(res.data[2])
   return {
-    props: { data: res.data.slice(0, 10) },
+    props: { data: res.data[2].slice(0, 10) },
   }
 }
 
