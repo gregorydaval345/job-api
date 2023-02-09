@@ -11,11 +11,32 @@ const Post = ({ post }) => {
     }
 
     return (
+        // {[2][0].map(inner) => (
+        //     {inner[2]?[0].map(post) => (
 
+        //     )}
+        // )}
+        // <div>
+        //     <h1>Job Description</h1>
+        //     <h2>{post.title}</h2>
+        //     <p>{post.description}</p>
+        // </div>
         <div>
-            <h1>Job Description</h1>
-            <h2>{post.title}</h2>
-            <p>{post.description}</p>
+            {
+                [2][0].map(inner => (
+                    <>
+                        {inner[2][0].map(jobs => (
+                            <>
+                                <p>{jobs.title}</p>
+                                <div>
+                                    {jobs.description}
+                                </div>
+                            </>
+                        ))
+                        }
+                    </>
+                ))
+            }
         </div>
     )
 }
